@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ommis</title>
+    <link rel="icon" href="./assets/imges/kitchen-set-solid.jpg" type="image/x-icon" />
     <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -13,7 +14,7 @@
 </head>
 <body>
      <header>
-        <a href="#" class="logo"><i class="fas-fa-untensils"></i>resto.</a>
+        <a href="#" class="logo"><i class="fa-solid fa-kitchen-set"></i></i>Ommis</a>
     <nav class="navbar">
         <a class="active" href= "#home">Home</a>
         <a href="#dishes">dishes</a>
@@ -36,7 +37,7 @@
                 <div class=" swiper-slide slide">
                     <div class="content">
                         <span>our special dish</span>
-                        <h3>spicy noodles</h3>
+                        <h3>chicken raan</h3>
                         <p>Come with family & feel the joy of mouthwatering food  </p>
                         <a href="#input-box " class="btn">Search</a>
                     </div>
@@ -47,12 +48,12 @@
                 <div class=" swiper-slide slide">
                     <div class="content">
                         <span>our special dish</span>
-                        <h3>spicy noodles</h3>
+                        <h3>white pasta</h3>
                         <p>Come with family & feel the joy of mouthwatering food  </p>
                         <a href="#input-box " class="btn">Search</a>
                     </div>
                     <div class="image">
-                        <img src="./assets/imges/AdobeStock_634621522_Preview-removebg-preview.png" alt="">
+                        <img src="./assets/imges/AdobeStock_616312987_Preview-removebg-preview.png" alt="">
                     </div>
                 </div>
                 <div class=" swiper-slide slide">
@@ -63,7 +64,7 @@
                         <a href="#input-box " class="btn">Search</a>
                     </div>
                     <div class="image">
-                        <img src="./assets/imges/AdobeStock_634621522_Preview-removebg-preview.png" alt="">
+                        <img src="./assets/imges/AdobeStock_624884580_Preview-removebg-preview.png" alt="">
                     </div>
                 </div>
                  
@@ -83,14 +84,11 @@
 
                  <img id="img-ran" src="" alt="">
              </div>
-             <!-- <div class="random-heading">
-                 <h3></h3>
-             </div> -->
+              
              <h3 class="random-heading"></h3>
-            <div class="random-stars">
-                 
-                 
-            </div>
+             <button class="btn-recipe">Recipe</button>
+
+             
              
              
         </div>
@@ -109,15 +107,19 @@
      
 
 
-     <div id="modal" class="modal-wrapper hide">
-        <div class="modal">
-          <div class="btn-close"></div>
-          <div class="clear"></div>
-          <div class="content">
-              Hey. Wuzzup.
-          </div>
+     <div id="modal" class="modal-wrapper  ">
+        <div class="modal hide" >
+            <h1>Ingrediants</h1>
+            <button id="back-button"> Back</button>
+            <div class="btn-close"></div>
+            <div class="clear"></div>
+            <div id="cont" class="content">
+                
+                <!-- Ingredients will be appended here -->
+            </div>
         </div>
-      </div>
+    </div>
+    
       
 
 

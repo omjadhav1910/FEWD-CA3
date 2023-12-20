@@ -290,9 +290,7 @@ header .icons #menu-bars{
     margin-right: 1rem;
     font-size: 2.5rem;
 }
-.hide{
-    display: none;
-}
+ 
 .input-box {
     position: relative;
     height: 80px;
@@ -344,110 +342,53 @@ header .icons #menu-bars{
   .input-box .button:active {
     transform: translateY(-50%) scale(0.98);
   }
- 
-  .box-container h1 b{
-    color: var(--green);
-    font-size: 3rem;
-  }
- 
-  /* //this color apears when you hover X button. */
-  /* $btn-close : #FF8CB4; */
-  
-  .btn-close {
-    cursor: pointer;
-    position: relative;
-    right: -5px;
-    top: 5px;
-    margin: 3px;
-    width: 20px;
-    height: 20px;
-    float: right;
-  }
-  .clear{
-      clear: both;
-  }
-  .btn-close::before,
-  .btn-close::after {
-    content: '';
-    height: 2px;
-    display: block;
-    background: #d6d6d6;
-  }
-  
-  .btn-close::before {
-    margin-top: 10px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-  
-  .btn-close::after {
-    margin-top: -2px;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-  
-  /* .btn-close:hover:after, .btn-close:hover:before {
-    background: $btn-close;
-  } */
-  .modal-wrapper {
-    width: 50vw;
-    height: 65vh;
-    background-color: #FCF4E3;
-    border: 4px solid black;
+  .modal{
+    width: 30rem;
+    height: 38rem;
+    background-image: #fff;
+    box-shadow: 1px 3px 26px 0px rgba(0, 0, 0, 0.3);
+    
+    background-color: #ffffff;
+    /* border: 4px solid black; */
     position: absolute;
-    top: 150%;
+    top: 105rem;
     left: 50%;
+    right: -50%;
     transform: translate(-50%,-50%);
-    padding: 10px;
+    padding: 40px;
+     
     
 
   }
-  .hide{
+  .btn-recipe{
+    box-shadow: 1px 3px 26px 0px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--green);
+    border:  solid var(--green) 1px;
+    margin-top: 1rem;
+    top: 5rem;
+    width: 10rem;
+    height: 4rem;
+
+  }
+ .hide{
     visibility: hidden;
+ }
+ 
+ #modal .modal button{
+    width: 10rem;
+    height: 4rem;
+    margin-left: 23rem;
+    margin-top: -6rem;
+    position: absolute;
+    color: var(--green);
+    border:  solid var(--green) 1px;
+    border-radius: 1rem;
+ }
+  .modal #cont{
+    font-size: 15px;
   }
-  
-  .modal {
-      padding-left: 15px;
-      padding-right: 15px;
-      display: inline-block;
-      height: 305px;
-      width: 470px;
-      position: relative;
-      margin: auto;
-      background: #e8e8e8;
-      background: -webkit-linear-gradient(bottom, #e8e8e8, #fff);
-      background: -o-linear-gradient(bottom, #e8e8e8, #fff);
-      background: linear-gradient(to top, #e8e8e8, #fff);
-      box-shadow: 0px 16px 16px -6px rgba(47, 46, 38, 0.5);
-      opacity: 0;
-      filter: alpha(opacity=0);
-      -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out;
-      -ms-transform: scale(0.7); /* IE 9 */
-     -webkit-transform: scale(0.7); /* Safari */
-     transform: scale(0.7);
-  }
-  
-  .modal-wrapper.open .modal {
-      opacity: 1;
-      filter: alpha(opacity=100);
-  
-      -ms-transform: scale(1); /* IE 9 */
-      -webkit-transform: scale(1); /* Safari */
-      transform: scale(1);
-  
-  }
-  
-  .content{
-      text-align: center;
-  }
-  
   @media screen and (max-width: 425px){
       .modal{
           width: 100%;
@@ -532,10 +473,7 @@ header .icons #menu-bars{
          
         font-size: 5rem;
     }
-    /* .search input{
-        width: 95%;
-		margin: 0 auto;
-    } */
+    
     
 }
 @media(max-width:991px){
@@ -546,11 +484,14 @@ header .icons #menu-bars{
         height: auto;
         width: 100%;
     }
+    .modal{
+        height: 40%;
+        width: 30%;
+        /* margin-top: 50rem; */
+
+    }
     
-    /* .search input{
-        width: 95%;
-		margin: 0 auto;
-    } */
+   
 }
 @media only screen and (min-width : 150px) and (max-width : 780px)
 {
@@ -560,6 +501,10 @@ header .icons #menu-bars{
 		width: 50%;
 		margin: 0 auto;
 	}
+    .modal{
+        width: 50%;
+        margin-top: 60rem;
+    }
 
 }
 @media screen and (max-width: 500px) {
@@ -578,5 +523,21 @@ header .icons #menu-bars{
       right: 12px;
       font-size: 14px;
       padding: 8px 18px;
+    }
+    .modal{
+        width: 60%;
+        height: 50%;
+        padding-left:6rem ;
+        margin-top: 20rem;
+    }
+    #back-button{
+        margin-left: -10rem;
+        position: absolute;
+         
+    }
+  }
+  @media screen and (max-width:1139px){
+    .modal{
+        top: 100rem;
     }
   }

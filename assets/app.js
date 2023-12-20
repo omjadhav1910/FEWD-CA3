@@ -19,69 +19,7 @@ var swiper = new Swiper(".home-slider", {
     },
      loop:true,
   });
-
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   // Function to fetch data from the API and create cards
-  //   function fetchDataAndCreateCards() {
-  //     // Get the input value
-  //     var inputValue = document.getElementById("searchInput").value;
-
-  //     // Construct the API URL with the input value
-  //     var apiUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
-
-  //     // Fetch data from the API
-  //     fetch(apiUrl)
-  //       .then(function (response) {
-  //         return response.json();
-  //       })
-  //       .then(function (data) {
-  //         // Get the meal details
-  //         var meal = data.meals[0];
-
-  //         // Create a new card element
-  //         var card = document.createElement("div");
-  //         card.className = "box";
-
-  //         // Create HTML content for the card
-  //         var cardContent =
-  //           '<img src="' +
-  //           meal.strMealThumb +
-  //           '" alt="' +
-  //           meal.strMeal +
-  //           '">' +
-  //           '<h3>' +
-  //           meal.strMeal +
-  //           '</h3>' +
-  //           '<div class="stars">' +
-  //           '<i class="fas fa-star"></i>' +
-  //           '<i class="fas fa-star"></i>' +
-  //           '<i class="fas fa-star"></i>' +
-  //           '<i class="fas fa-star"></i>' +
-  //           '<i class="fas fa-star-half-alt"></i>' +
-  //           '</div>' +
-  //           '<span>$15.99</span>' +
-  //           '<a href="#" class="btn">add to cart</a>';
-
-  //         // Set the HTML content to the card
-  //         card.innerHTML = cardContent;
-
-  //         // Append the card to the container
-  //         document.getElementById("boxContainer").appendChild(card);
-  //       })
-  //       .catch(function (error) {
-  //         console.error("Error fetching data:", error);
-  //       });
-  //   }
-
-  //   // Attach an event listener to the search button
-  //   document.getElementById("searchButton").addEventListener("click", function () {
-  //     // Clear existing cards
-  //     document.getElementById("boxContainer").innerHTML = "";
-
-  //     // Fetch data and create cards
-  //     fetchDataAndCreateCards();
-  //   });
-  // });
+ 
 
   const randomMealImg = document.querySelectorAll('.random-img');
   const randomMealName = document.querySelectorAll('.random-heading');
@@ -109,10 +47,14 @@ var swiper = new Swiper(".home-slider", {
           randomMealName.forEach(el => {
               el.innerHTML = data.meals[0].strMeal;
           });
+
+          displayIngredients(data.meals[0].idMeal)
   
       } catch (error) {
           console.error("An error has occurred while fetching the data for random meal - ", error);
       }
+
+      
   }
   
   getRandomMeal();
@@ -175,3 +117,84 @@ var swiper = new Swiper(".home-slider", {
     random.classList.remove("hide")
   })
   
+ // Function to display ingredients in the modal
+
+// Function to display ingredients in the modal
+async function displayIngredients(mealId) {
+    try {
+        // Fetch data from the API
+        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+        const data = await res.json();
+        console.log(data)
+
+        // Get the meal details
+        const meal = data.meals[0];
+
+        // Get modal elements
+        const modalContent = document.getElementById('cont');
+        const modalWrapper = document.querySelector('.modal-wrapper');
+
+        // Set modal content
+        modalContent.innerHTML = '';
+
+        // Create an unordered list for ingredients
+        const ingredientsList = document.createElement('ul');
+
+        // Iterate through ingredients and measures (up to 20, adjust as needed)
+        for (let i = 1; i <= 20; i++) {
+            const ingredient = meal[`strIngredient${i}`];
+            const measure = meal[`strMeasure${i}`];
+
+            if (ingredient && measure) {
+                const li = document.createElement('li');
+                li.textContent = `${measure} ${ingredient}`;
+                ingredientsList.appendChild(li);
+            }
+        }
+
+        // Append the ingredients list to the modal content
+        modalContent.appendChild(ingredientsList);
+
+        // Show the modal
+        modalWrapper.classList.remove('hide');
+
+    } catch (error) {
+        console.error('Error while fetching ingredients:', error);
+    }
+}
+
+const modalWrapper = document.querySelector('.modal ');
+// Event listener for the modal close button
+document.querySelector('.btn-close').addEventListener('click', () => {
+    const modalWrapper = document.querySelector('.modal-wrapper');
+    modalWrapper.classList.add('hide');
+});
+
+
+// Event listener for the modal close button
+document.querySelector('.btn-close').addEventListener('click', () => {
+    const modalWrapper = document.querySelector('.modal-wrapper');
+    modalWrapper.classList.add('hide');
+});
+function handleRecipeButtonClick() {
+    
+    // Remove the 'hide' class from the modal
+    modalWrapper.classList.remove('hide');
+}
+
+// Event listener for the Recipe button click
+document.querySelector('.btn-recipe').addEventListener('click', ()=>{
+    modalWrapper.classList.remove('hide')
+});
+
+// Event listener for the modal close button
+document.querySelector('.btn-close').addEventListener('click', () => {
+    const modalWrapper = document.querySelector('.modal-wrapper');
+    
+    // Add the 'hide' class to the modal
+    modalWrapper.classList.add('hide');
+});
+
+document.getElementById("back-button").addEventListener('click',()=>{
+    modalWrapper.classList.add('hide');
+})
